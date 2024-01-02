@@ -7,11 +7,15 @@ import img from "./assets/config.png";
 function randomInt(value) {
     return Math.floor(Math.random() * value);
 }
+function handleClick(buttonSelected) {
+    console.log({buttonSelected});
+}
+function Concepts({children, onSelect}) {
 
-function Concepts({children}) {
+
     return (
         <li>
-            <button>{children}</button>
+            <button onClick={onSelect}>{children}</button>
         </li>
     );
 }
@@ -41,10 +45,10 @@ function App() {
                 <section id="examples">
                     <h2>Concepts</h2>
                     <menu>
-                        <Concepts>Components</Concepts>
-                        <Concepts>JSX</Concepts>
-                        <Concepts>Props</Concepts>
-                        <Concepts>State</Concepts>
+                        <Concepts onSelect={() => {handleClick('Components')}}>Components</Concepts>
+                        <Concepts onSelect={() => {handleClick('JSX')}}>JSX</Concepts>
+                        <Concepts onSelect={() => {handleClick('Props')}}>Props</Concepts>
+                        <Concepts onSelect={() => {handleClick('State')}}>State</Concepts>
                     </menu>
                 </section>
             </main>

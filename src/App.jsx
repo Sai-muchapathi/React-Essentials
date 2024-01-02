@@ -1,6 +1,7 @@
 import {CORE_CONCEPTS} from "./data";
 import {CoreConcepts} from "./CoreConcepts";
 import {EXAMPLES} from "./data";
+
 const descriptors = ['Fundamental', 'Crucial', 'Core'];
 import img from "./assets/config.png";
 import {useState} from "react";
@@ -9,11 +10,11 @@ function randomInt(value) {
     return Math.floor(Math.random() * value);
 }
 
-function Concepts({children, onSelect}) {
+function Concepts({children, onSelect, isClicked}) {
 
 
     return (<li>
-        <button onClick={onSelect}>{children}</button>
+        <button className={isClicked ? 'active' : undefined} onClick={onSelect}>{children}</button>
     </li>);
 }
 
@@ -30,15 +31,13 @@ function App() {
     let tabContent = <p>Please select a topic.</p>;
 
     if (state) {
-        tabContent = (
-            <div id="tab-content">
+        tabContent = (<div id="tab-content">
                 <h3>{EXAMPLES[state].title}</h3>
                 <p>{EXAMPLES[state].description}</p>
                 <pre>
           <code>{EXAMPLES[state].code}</code>
         </pre>
-            </div>
-        );
+            </div>);
     }
 
     return (<div>
@@ -63,16 +62,17 @@ function App() {
             <section id="examples">
                 <h2>Concepts</h2>
                 <menu>
-                    <Concepts onSelect={() => {
-                        handleClick('components')
-                    }}>Components</Concepts>
-                    <Concepts onSelect={() => {
+                    <Concepts isClicked={state === 'components'}
+                              onSelect={() => {
+                                  handleClick('components')
+                              }}>Components</Concepts>
+                    <Concepts isClicked={state === 'jsx'} onSelect={() => {
                         handleClick('jsx')
                     }}>JSX</Concepts>
-                    <Concepts onSelect={() => {
+                    <Concepts isClicked={state === 'props'} onSelect={() => {
                         handleClick('props')
                     }}>Props</Concepts>
-                    <Concepts onSelect={() => {
+                    <Concepts isClicked={state === 'state'} onSelect={() => {
                         handleClick('state')
                     }}>State</Concepts>
                 </menu>

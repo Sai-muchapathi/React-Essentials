@@ -53,10 +53,10 @@ function App() {
             <section id="core-concepts">
                 <h2>Time to get started!</h2>
                 <ul>
-                    <CoreConcepts {...CORE_CONCEPTS[0]}/>
-                    <CoreConcepts {...CORE_CONCEPTS[1]}/>
-                    <CoreConcepts {...CORE_CONCEPTS[2]}/>
-                    <CoreConcepts {...CORE_CONCEPTS[3]}/>
+                    {CORE_CONCEPTS.map((concepts) => (
+                        <CoreConcepts key={concepts.title} {...concepts}/>
+                    ))}
+
                 </ul>
             </section>
             <section id="examples">

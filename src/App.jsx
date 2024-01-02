@@ -8,10 +8,10 @@ function randomInt(value) {
     return Math.floor(Math.random() * value);
 }
 
-function Concepts(props) {
+function Concepts({children}) {
     return (
         <li>
-            <button>{props.name}</button>
+            <button>{children}</button>
         </li>
     );
 }
@@ -41,10 +41,10 @@ function App() {
                 <section id="examples">
                     <h2>Concepts</h2>
                     <menu>
-                        <Concepts name={'props'}/>
-                        <Concepts name={'React'}/>
-                        <Concepts name={'props'}/>
-                        <Concepts name={'props'}/>
+                        <Concepts>Components</Concepts>
+                        <Concepts>JSX</Concepts>
+                        <Concepts>Props</Concepts>
+                        <Concepts>State</Concepts>
                     </menu>
                 </section>
             </main>

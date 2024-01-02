@@ -1,4 +1,4 @@
-import img from "./assets/config.png";
+import img from "../assets/config.png";
 
 export function CoreConcepts(props) {
     return (

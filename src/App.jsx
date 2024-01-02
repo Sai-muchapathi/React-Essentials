@@ -1,26 +1,16 @@
 import {CORE_CONCEPTS} from "./data";
-import {CoreConcepts} from "./CoreConcepts";
+import {CoreConcepts} from "./components/CoreConcepts";
 import {EXAMPLES} from "./data";
-
+import {Concepts} from "./components/Concepts";
+import Header from "./components/Header";
 const descriptors = ['Fundamental', 'Crucial', 'Core'];
-import img from "./assets/config.png";
 import {useState} from "react";
 
 function randomInt(value) {
     return Math.floor(Math.random() * value);
 }
 
-function Concepts({children, onSelect, isClicked}) {
-
-
-    return (<li>
-        <button className={isClicked ? 'active' : undefined} onClick={onSelect}>{children}</button>
-    </li>);
-}
-
 function App() {
-
-
     const descriptor = descriptors[randomInt(2)];
     const [state, setState] = useState();
 
@@ -41,14 +31,8 @@ function App() {
     }
 
     return (<div>
-        <header>
-            <img src="src/assets/react-core-concepts.png" alt="Stylized atom"/>
-            <h1>React Essentials</h1>
-            <p>
-                {descriptor} Fundamental React concepts you will need for almost any app you are
-                going to build!
-            </p>
-        </header>
+        <Header/>
+
         <main>
             <section id="core-concepts">
                 <h2>Time to get started!</h2>
